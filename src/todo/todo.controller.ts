@@ -35,7 +35,7 @@ export class TodoController {
   })
   @ApiOkResponse({ description: 'ID에 해당하는 Todo 항목을 반환합니다.', type: TodoEntity })
   @ApiNotFoundResponse({ description: '해당 ID를 가진 Todo 항목을 찾을 수 없을 때 반환됩니다.' })
-  findOne(@Param('id') id: number) {
+  findOne(@Param('id') id: string) {
     return this.todoService.findOne(+id)
   }
 
@@ -46,7 +46,7 @@ export class TodoController {
   })
   @ApiOkResponse({ description: '성공적으로 업데이트된 Todo 항목을 반환합니다.', type: TodoEntity })
   @ApiNotFoundResponse({ description: '해당 ID를 가진 Todo 항목을 찾을 수 없을 때 반환됩니다.' })
-  update(@Param('id') id: number, @Body() updateTodoDto: UpdateTodoDto) {
+  update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
     return this.todoService.update(+id, updateTodoDto)
   }
 
@@ -57,7 +57,7 @@ export class TodoController {
   })
   @ApiOkResponse({ description: '성공적으로 삭제된 Todo 항목을 반환합니다.', type: TodoEntity })
   @ApiNotFoundResponse({ description: '해당 ID를 가진 Todo 항목을 찾을 수 없을 때 반환됩니다.' })
-  remove(@Param('id') id: number) {
+  remove(@Param('id') id: string) {
     return this.todoService.remove(+id)
   }
 }

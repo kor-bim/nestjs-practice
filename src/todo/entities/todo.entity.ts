@@ -9,7 +9,7 @@ export class TodoEntity {
     required: true
   })
   @PrimaryGeneratedColumn('uuid')
-  id: number
+  id: string
 
   @ApiProperty({
     description: '일정의 카테고리 (예: 개인, 업무, 여가)',

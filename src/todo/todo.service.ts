@@ -18,11 +18,11 @@ export class TodoService {
     return await this.todoRepository.find()
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     return await this.todoRepository.findOne({ where: { id } })
   }
 
-  async update(id: number, updateTodoDto: UpdateTodoDto) {
+  async update(id: string, updateTodoDto: UpdateTodoDto) {
     const todo = await this.todoRepository.findOne({ where: { id } })
     if (!todo) {
       throw new NotFoundException('Todo not found')
@@ -32,7 +32,7 @@ export class TodoService {
     return await this.todoRepository.save(todo)
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     const todo = await this.todoRepository.findOne({ where: { id } })
     if (!todo) {
       throw new NotFoundException('Todo not found')
