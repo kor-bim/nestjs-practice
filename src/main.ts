@@ -26,6 +26,7 @@ async function bootstrap() {
     .setTitle('Practice API')
     .setDescription('교육용 및 테스트용 API')
     .setVersion('1.0')
+    .addBearerAuth()
     .build()
 
   const document = SwaggerModule.createDocument(app, config)

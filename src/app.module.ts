@@ -5,6 +5,7 @@ import { TodoModule } from './todo/todo.module'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { TypeOrmModule, TypeOrmModuleAsyncOptions } from '@nestjs/typeorm'
 import { join } from 'path'
+import { AuthModule } from './auth/auth.module'
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { join } from 'path'
         }) as TypeOrmModuleAsyncOptions,
       inject: [ConfigService]
     }),
+    AuthModule,
     TodoModule
   ],
   controllers: [AppController],

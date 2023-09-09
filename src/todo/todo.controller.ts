@@ -1,12 +1,23 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common'
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common'
 import { TodoService } from './todo.service'
 import { CreateTodoDto } from './dto/create-todo.dto'
 import { UpdateTodoDto } from './dto/update-todo.dto'
-import { ApiBody, ApiCreatedResponse, ApiNotFoundResponse, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger'
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiCreatedResponse,
+  ApiNotFoundResponse,
+  ApiOkResponse,
+  ApiOperation,
+  ApiTags
+} from '@nestjs/swagger'
 import { TodoEntity } from './entities/todo.entity'
+import { AuthGuard } from '@nestjs/passport'
 
 @Controller('todo')
 @ApiTags('Todo API')
+@ApiBearerAuth()
+@UseGuards(AuthGuard('bearer'))
 export class TodoController {
   constructor(private readonly todoService: TodoService) {}
 
